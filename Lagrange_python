@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Crear un rango de valores para el eje x
+x = np.linspace(-10, 10, 400)
+
+# Definir varias funciones que convergen hacia la línea y = 0
+y1 = np.arctan(x)  # Función arco tangente
+y2 = np.sin(x)/x   # Seno sobre x
+y3 = np.tanh(x)    # Tangente hiperbólica
+y4 = np.log(np.abs(x)) * np.heaviside(x, 0.5)  # Logaritmo de x positivo
+y5 = 1/(1 + np.exp(-x))  # Sigmoide
+
+# Crear la figura y los ejes
+plt.figure(figsize=(8, 6))
+
+# Graficar las funciones
+plt.plot(x, y1, label='arctan(x)', color='red')
+plt.plot(x, y2, label='sin(x)/x', color='green')
+plt.plot(x, y3, label='tanh(x)', color='blue')
+plt.plot(x, y4, label='log(abs(x))', color='purple')
+plt.plot(x, y5, label='1/(1 + exp(-x))', color='brown')
+
+# Añadir línea central en y = 0
+plt.axhline(0, color='black',linewidth=0.5)
+
+# Añadir etiquetas y leyenda
+plt.title('Gráfico de funciones que convergen a una línea central')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+
+# Mostrar el gráfico
+plt.grid(True)
+plt.show()
